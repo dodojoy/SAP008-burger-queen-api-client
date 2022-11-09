@@ -16,5 +16,3 @@ export function OptionSelect({ value }) {
 		<option value={value}>{value}</option>
 	)
 }
-
-
