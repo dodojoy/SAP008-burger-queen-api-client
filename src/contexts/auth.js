@@ -20,7 +20,7 @@
 // return <AuthContext.Provider>{children}</AuthContext.Provider>;
 // };
 
-export const creatingUser = (name, email, password, role) => {
+export const createUser = (name, email, password, role) => {
   console.log(name, email, password, role);
   return fetch('https://lab-api-bq.onrender.com/users', {
     method: 'POST',
@@ -31,6 +31,17 @@ export const creatingUser = (name, email, password, role) => {
       password: password,
       role: role,
       restaurant: 'Burguer Queen',
+    }),
+  });
+};
+
+export const login = (email, password) => {
+  return fetch('https://lab-api-bq.onrender.com/auth', {
+    method:'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      email: email,
+      password: password,
     }),
   });
 };
