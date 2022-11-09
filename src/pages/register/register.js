@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import {
   OptionSelect, Inputs,
-  FooterAuth
+  FooterAuth,
 } from '../../components'
 import logo from '../../assets/logo.svg';
 import '../login/login.css'
 import '../../style.css'
 import './register.css'
-import { creatingUser } from '../../contexts/auth'
+import { createUser } from '../../contexts/auth'
 import { errorMessage } from "../../errors/error";
 import { useNavigate } from 'react-router-dom';
 
@@ -26,42 +26,42 @@ export const Register = () => {
     if (password !== confirmPassword) {
       tagErrorMessage.innerHTML = 'As senhas devem combinar'
     } else {
-      creatingUser(name, email, password, role)
-      .then((response) => {
-        if (response.status === 200) {
-          navigate('/login');
-          return response.json();
-        }
-        tagErrorMessage.innerHTML = error[0].register[response.status];
-      })
-      .then((data) => {
-        if(!data) return;
-        console.log(data.token);
-        console.log(data);
-      })
-      .catch((erro) => console.log(erro));
+      createUser(name, email, password, role)
+        .then((response) => {
+          if (response.status === 200) {
+            navigate('/login');
+            return response.json();
+          }
+          tagErrorMessage.innerHTML = error[0].register[response.status];
+        })
+        .then((data) => {
+          if (!data) return;
+          console.log(data.token);
+          console.log(data);
+        })
+        .catch((erro) => console.log(erro));
     }
   }
 
-    return (
-      <section className='div-auth'>
-        <img className='logo' src={logo} alt='logo'></img>
-        <form>
-          <Inputs type='text' onChange={(e) => setName(e.target.value)} placeholder='NOME' class /><br />
-          <Inputs type='email' onChange={(e) => setEmail(e.target.value)} placeholder='E-MAIL' class /><br />
-          <Inputs type='password' onChange={(e) => setPassword(e.target.value)} placeholder='SENHA' /><br />
-          <Inputs type='password' onChange={(e) => setConfirmPassword(e.target.value)} placeholder='CONFIRMAR SENHA' /><br />
-          <select className="select-register" onChange={(e) => setRole(e.target.value)}  >
-            <OptionSelect value='Sua função' />
-            <OptionSelect value='Atendente' />
-            <OptionSelect value='Cozinheiro(a)' />
-          </select>
-          <p id='error-message'></p>
-          <Inputs type='submit' value='CADASTRAR' onClick={teste} />
-        </form>
-        <FooterAuth text1='Já possui uma conta?' text2='Faça login!' href='/login' />
-      </section>
-    );
+  return (
+    <section className='div-auth'>
+      <img className='logo' src={logo} alt='logo'></img>
+      <form>
+        <Inputs type='text' onChange={(e) => setName(e.target.value)} placeholder='NOME' class /><br />
+        <Inputs type='email' onChange={(e) => setEmail(e.target.value)} placeholder='E-MAIL' class /><br />
+        <Inputs type='password' onChange={(e) => setPassword(e.target.value)} placeholder='SENHA' /><br />
+        <Inputs type='password' onChange={(e) => setConfirmPassword(e.target.value)} placeholder='CONFIRMAR SENHA' /><br />
+        <select className="select-register" onChange={(e) => setRole(e.target.value)}  >
+          <OptionSelect value='Sua função' />
+          <OptionSelect value='Atendente' />
+          <OptionSelect value='Cozinheiro(a)' />
+        </select>
+        <p id='error-message'></p>
+        <Inputs type='submit' value='CADASTRAR' onClick={teste} />
+      </form>
+      <FooterAuth text1='Já possui uma conta?' text2='Faça login!' href='/login' />
+    </section>
+  );
 }
 
 // const user = {
