@@ -22,13 +22,17 @@ export const Login = () => {
 			login(email, password)
 				.then((response) => {
 					if (response.status === 200) {
-						navigate('/salon')
 						return response.json();
 					}
 					tagErrorMessage.innerHTML = error[0].login[response.status];
 				})
 				.then((data) => {
 					if (!data) return;
+					if (data.role === 'atendente') {
+						navigate('/salon')
+					} else if (data.role === 'cozinheiro(a)') {
+						navigate('/kitchen')
+					}
 					console.log(data.token);
 					console.log(data);
 				})
