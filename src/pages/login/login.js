@@ -3,7 +3,7 @@ import { Inputs, FooterAuth, } from '../../components';
 import logo from '../../assets/logo.svg';
 import './login.css'
 import '../../style.css'
-import { login } from "../../contexts/auth";
+import { login, saveToken } from "../../contexts/api";
 import { useNavigate } from 'react-router-dom';
 import { errorMessage } from "../../errors/error";
 
@@ -33,8 +33,7 @@ export const Login = () => {
 					} else if (data.role === 'cozinheiro(a)') {
 						navigate('/kitchen')
 					}
-					console.log(data.token);
-					console.log(data);
+					saveToken(data.token);
 				})
 				.catch((erro) => console.log(erro));
 		};

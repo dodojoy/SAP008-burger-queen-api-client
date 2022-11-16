@@ -1,25 +1,3 @@
-// import React, { createContext, useEffect, useState } from "react";
-
-// export const AuthContext = createContext({});
-
-// export const AuthProvider = ({ children }) => {
-//   const [user, setUser] = useState();
-//   useEffect(() => {
-//     const userToken = localStorage.getItem("user_token");
-//     const usersStorage = localStorage.getItem("users_db");
-
-//     if (userToken && usersStorage) {
-//       const hasUser = JSON.parse(usersStorage)?.filter(
-//         (user) => user.email === JSON.parse(userToken).email
-//       );
-
-//       if (hasUser) setUser(hasUser[0]);
-//     }
-//   }, []);
-  
-// return <AuthContext.Provider>{children}</AuthContext.Provider>;
-// };
-
 export const createUser = (name, email, password, role) => {
   console.log(name, email, password, role);
   return fetch('https://lab-api-bq.onrender.com/users', {
@@ -37,7 +15,7 @@ export const createUser = (name, email, password, role) => {
 
 export const login = (email, password) => {
   return fetch('https://lab-api-bq.onrender.com/auth', {
-    method:'POST',
+    method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
       email: email,
@@ -46,9 +24,25 @@ export const login = (email, password) => {
   });
 };
 
+export const saveToken = (token) => {
+  localStorage.setItem('token', token);
+}
+
+const token = () => localStorage.getItem('token')
+
+
+export const menu = () => {
+  return fetch('https://lab-api-bq.onrender.com/products', {
+    method: 'GET',
+    headers: { 
+      'Content-Type': 'application/json',
+      'Authorization': token(),
+    },
+  })
+};
+
 // return fetch('https://lab-api-bq.up.onrender.app/products', {
 //     method: 'GET',
 //     headers: { 'Content-Type': 'application/json',
 //       'Authorization': token },
 //     }),
-

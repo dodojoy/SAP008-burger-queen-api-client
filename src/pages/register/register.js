@@ -7,7 +7,7 @@ import logo from '../../assets/logo.svg';
 import '../login/login.css'
 import '../../style.css'
 import './register.css'
-import { createUser } from '../../contexts/auth'
+import { createUser } from '../../contexts/api'
 import { errorMessage } from "../../errors/error";
 import { useNavigate } from 'react-router-dom';
 
@@ -52,7 +52,7 @@ export const Register = () => {
         <Inputs type='password' onChange={(e) => setPassword(e.target.value)} placeholder='SENHA' /><br />
         <Inputs type='password' onChange={(e) => setConfirmPassword(e.target.value)} placeholder='CONFIRMAR SENHA' /><br />
         <select className="select-register" onChange={(e) => setRole(e.target.value)}  >
-          <OptionSelect value='Sua função' />
+          <OptionSelect value='SUA FUNÇÃO' />
           <OptionSelect value='Atendente' />
           <OptionSelect value='Cozinheiro(a)' />
         </select>
