@@ -1,5 +1,4 @@
 export const createUser = (name, email, password, role) => {
-  console.log(name, email, password, role);
   return fetch('https://lab-api-bq.onrender.com/users', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
