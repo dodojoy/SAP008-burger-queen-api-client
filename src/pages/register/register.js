@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import {
-  OptionSelect, Inputs,
-  FooterAuth,
-} from '../../components'
+import { Inputs } from "../../components/inputs";
+import { FooterAuth } from "../../components/footer";
+import { OptionSelect } from "../../components/select";
 import logo from '../../assets/logo.svg';
 import '../login/login.css'
 import '../../style.css'
