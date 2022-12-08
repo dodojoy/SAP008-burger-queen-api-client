@@ -1,5 +1,5 @@
 .div-auth {
-  background-color: rgba(236, 230, 223, 0.88);
+  background-color: rgba(236, 230, 223, 0.758);
   /* margin: 15vh 25vw; */
   padding: 3vh 3vw;
   width: 50vw;
@@ -9,23 +9,23 @@
 .input-auth {
   margin: 1vh 0;
   background-color: var(--color-white);
-  border: 1px solid var(--color-light-blue);
+  border: none;
   width: 29vw;
   height: 3vh;
-  color: var(--color-dark-blue);
+  color: var(--color-red);
   font-size: 1rem;
   font-weight: 400;
 }
 
 .input-auth::placeholder {
-  color: var(--color-dark-blue);
+  color: var(--color-red);
   font-size: 1rem;
   font-weight: 400;
 }
 
 .input-auth[type='submit'] {
   margin: 1vh 0;
-  background-color: var(--color-light-blue);
+  background-color: var(--color-red);
   border: 1px solid;
   width: 15vw;
   border-radius: 5px;
@@ -34,4 +34,11 @@
   font-weight: 600;
 }
 
-/* .foot */
+.footer-auth {
+  color: var(--color-red);
+}
+
+.footer-auth a {
+  display: block;
+  color: var(--color-red);
+}
