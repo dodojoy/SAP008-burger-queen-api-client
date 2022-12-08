@@ -1,0 +1,21 @@
+.menu-box {
+    background-color: var(--color-black);
+    min-width: 80vw;
+    min-height: 5vh;
+    margin-bottom: 2rem;
+    color: var(--color-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hour-menu-text {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.arrow {
+    margin: 0;
+    width: 1.5rem;
+    height: 1.5rem;
+}
