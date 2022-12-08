@@ -7,6 +7,7 @@ import '../../style.css'
 import { login, saveToken } from "../../contexts/api";
 import { useNavigate } from 'react-router-dom';
 import { errorMessage } from "../../errors/error";
+import { saveUser } from "../../contexts/api";
 
 export const Login = () => {
 	const [email, setEmail] = useState('');
@@ -35,6 +36,7 @@ export const Login = () => {
 						navigate('/kitchen')
 					}
 					saveToken(data.token);
+					saveUser(data.name);
 				})
 				.catch((erro) => console.log(erro));
 		};
