@@ -10,7 +10,7 @@ import {
 
 export const RoutesBQ = () => {
  return (
-  <BrowserRouter>
+  <BrowserRouter basename={`/${process.env.PUBLIC_URL}`}>
     <Fragment>
       <Routes>
         <Route path='/' element={<Login />} />
