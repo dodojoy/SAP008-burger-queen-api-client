@@ -27,8 +27,13 @@ export const saveToken = (token) => {
   localStorage.setItem('token', token);
 }
 
-const token = () => localStorage.getItem('token')
+export const saveUser = (userName) => {
+  localStorage.setItem('name', userName);
+}
 
+const token = () => localStorage.getItem('token');
+
+export const userName = () => localStorage.getItem('name');
 
 export const menu = () => {
   return fetch('https://lab-api-bq.onrender.com/products', {
