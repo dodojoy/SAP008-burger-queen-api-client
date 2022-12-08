@@ -12,12 +12,12 @@
   --color-white: #F7F6F6;
   --color-off-white: #ECE6DF;
   --color-red: #C43625;
-  --color-light-blue: #09757C;
-  --color-dark-blue: #03484D;
+  --color-black: #000000;
+
 }
 
 body {
-  background-image: url(./assets/background.jpg);
+  background-image: url(./assets/background.svg);
   background-size: cover;
   background-attachment: fixed;
   height: 100vh;
