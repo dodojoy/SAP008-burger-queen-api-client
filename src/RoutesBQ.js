@@ -4,13 +4,13 @@ import { Salon } from './pages/salon/salon';
 import { Kitchen } from './pages/kitchen/kitchen';
 import { Fragment } from 'react';
 import {
-  HashRouter,
+  BrowserRouter,
   Routes, Route,
 } from 'react-router-dom';
 
 export const RoutesBQ = () => {
  return (
-  <HashRouter basename={`/${process.env.PUBLIC_URL}`}>
+  <BrowserRouter>
     <Fragment>
       <Routes>
         <Route path='/' element={<Login />} />
@@ -20,6 +20,6 @@ export const RoutesBQ = () => {
         <Route exact path='/kitchen' element={<Kitchen />} />
       </Routes>
     </Fragment>
-  </HashRouter>
+  </BrowserRouter>
  );
 }
