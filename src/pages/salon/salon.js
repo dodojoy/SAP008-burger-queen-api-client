@@ -26,6 +26,7 @@ export const Salon = () => {
     if (p.sub_type === 'breakfast') {
       return <Item key={p.id} name={p.name} price={p.price}></Item>
     }
+    return '';
   })
 
   // const lunchMenu = selectProducts.map((p) => {
@@ -41,3 +42,4 @@ export const Salon = () => {
   );
 }
 
+// product={breakfastMenu} linha 38
