@@ -9,7 +9,7 @@ import '../../components/header.css'
 import '../../components/menu.css'
 
 export const Salon = () => {
-  const [selectProducts, setSelectProducts] = useState();
+  const [selectProducts, setSelectProducts] = useState([]);
 
   useEffect(() => {
     menu()
