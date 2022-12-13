@@ -13,11 +13,11 @@ export const RoutesBQ = () => {
   <BrowserRouter>
     <Fragment>
       <Routes>
-        <Route path='/' element={<Login />} />
-        <Route exact path='/login' element={<Login />} />
-        <Route exact path='/register' element={<Register />} />
-        <Route exact path='/salon' element={<Salon />} />
-        <Route exact path='/kitchen' element={<Kitchen />} />
+        <Route exact path='/' element={<Login />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/register' element={<Register />} />
+        <Route path='/salon' element={<Salon />} />
+        <Route path='/kitchen' element={<Kitchen />} />
       </Routes>
     </Fragment>
   </BrowserRouter>
