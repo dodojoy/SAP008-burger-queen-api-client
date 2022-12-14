@@ -11,7 +11,7 @@ Este projeto tem duas áreas: interface (cliente) e API (servidor). Nosso client
 
 A interface deve mostrar os dois menus (café da manhã e restante do dia), cada um com todos os seus produtos. O usuário deve poder escolher que produtos adicionar e a interface deve mostrar o resumo do pedido com o custo total.
 
-O objetivo desse projeto é construir essa interface usando React como framework e consumindo a API (link da API).
+O objetivo desse projeto é construir essa interface usando React como framework e consumindo a API.
 
 ## 2. Definição do produto
 
