@@ -1,7 +1,7 @@
 export function Menu({ hour, product }) {
 	return (
         <details className="menu-box">
-            <summary className="hour-menu-text">{hour}</summary>
+            <summary className="meal-menu-text">{hour}</summary>
             {product}
         </details>
 	);
@@ -9,9 +9,9 @@ export function Menu({ hour, product }) {
 
 export function Item({ name, price}) {
 	return (
-        <div>
+        <div className="item-content">
             <p className="product">{name}</p>
-            <p className="price">{price}</p>
+            <p className="price">R$ {price}</p>
             <button>+</button>
         </div>
 	);
