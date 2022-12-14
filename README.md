@@ -4,7 +4,7 @@ STATUS: Em produção
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" width="40" height="40"> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" width="40" height="40"> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" width="40" height="40"> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/2300px-React-icon.svg.png" width="40" height="40">
 
 
-Você pode acompanhar a construção dessa aplicação clicando <a href='https://helpful-yeot-19684a.netlify.app/' target="_blank">aqui!</a>
+Você pode acompanhar a construção dessa aplicação clicando <a href='https://helpful-yeot-19684a.netlify.app/'>aqui!</a>
 
 ## 1. Introdução
 
