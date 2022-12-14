@@ -43,23 +43,25 @@ export const Register = () => {
   }
 
   return (
-    <section className='div-auth'>
-      <img className='logo' src={logo} alt='logo'></img>
-      <form>
-        <Inputs type='text' onChange={(e) => setName(e.target.value)} placeholder='NOME' class /><br />
-        <Inputs type='email' onChange={(e) => setEmail(e.target.value)} placeholder='E-MAIL' class /><br />
-        <Inputs type='password' onChange={(e) => setPassword(e.target.value)} placeholder='SENHA' /><br />
-        <Inputs type='password' onChange={(e) => setConfirmPassword(e.target.value)} placeholder='CONFIRMAR SENHA' /><br />
-        <select className="select-register" onChange={(e) => setRole(e.target.value)}  >
-          <OptionSelect value='SUA FUNÇÃO' />
-          <OptionSelect value='Atendente' />
-          <OptionSelect value='Cozinheiro(a)' />
-        </select>
-        <p id='error-message'></p>
-        <Inputs type='submit' value='CADASTRAR' onClick={teste} />
-      </form>
-      <FooterAuth text1='Já possui uma conta?' text2='Faça login!' href='/login' />
-    </section>
+    <div className="register-content">
+      <section className='div-auth'>
+        <img className='logo' src={logo} alt='logo'></img>
+        <form>
+          <Inputs type='text' onChange={(e) => setName(e.target.value)} placeholder='NOME' class /><br />
+          <Inputs type='email' onChange={(e) => setEmail(e.target.value)} placeholder='E-MAIL' class /><br />
+          <Inputs type='password' onChange={(e) => setPassword(e.target.value)} placeholder='SENHA' /><br />
+          <Inputs type='password' onChange={(e) => setConfirmPassword(e.target.value)} placeholder='CONFIRMAR SENHA' /><br />
+          <select className="select-register" onChange={(e) => setRole(e.target.value)}  >
+            <OptionSelect value='SUA FUNÇÃO' />
+            <OptionSelect value='Atendente' />
+            <OptionSelect value='Cozinheiro(a)' />
+          </select>
+          <p id='error-message'></p>
+          <Inputs type='submit' value='CADASTRAR' onClick={teste} />
+        </form>
+        <FooterAuth text1='Já possui uma conta?' text2='Faça login!' href='/login' />
+      </section>
+    </div>
   );
 }
 
