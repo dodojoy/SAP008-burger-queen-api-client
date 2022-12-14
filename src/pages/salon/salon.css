@@ -1,0 +1,10 @@
+.menu {
+    width: 100vw;
+    height: 100vh;
+    background-image: url(../../assets/background.svg);
+    background-size: cover;
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
