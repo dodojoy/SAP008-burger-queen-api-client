@@ -4,6 +4,7 @@ import { Inputs } from "../../components/inputs";
 import logo from '../../assets/logo.svg';
 import './login.css'
 import '../../style.css'
+import '../../components/footer.css'
 import { login, saveToken } from "../../contexts/api";
 import { useNavigate } from 'react-router-dom';
 import { errorMessage } from "../../errors/error";
@@ -52,7 +53,7 @@ export const Login = () => {
 					<p id='error-message'></p>
 					<Inputs type='submit' value='ENTRAR' onClick={loginEvent}/>
 				</form>
-				<FooterAuth text1='Não possui uma conta?' text2='Cadastre-se!' href='register' />
+				<FooterAuth text1='Não possui uma conta?' text2='Cadastre-se!' onClick={() => navigate('/register')} />
 			</section>
 		</div>
 	);

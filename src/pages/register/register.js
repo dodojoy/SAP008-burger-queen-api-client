@@ -3,10 +3,11 @@ import { Inputs } from "../../components/inputs";
 import { FooterAuth } from "../../components/footer";
 import { OptionSelect } from "../../components/select";
 import logo from '../../assets/logo.svg';
-import '../login/login.css'
-import '../../style.css'
-import './register.css'
-import { createUser } from '../../contexts/api'
+import '../login/login.css';
+import '../../style.css';
+import './register.css';
+import '../../components/footer.css';
+import { createUser } from '../../contexts/api';
 import { errorMessage } from "../../errors/error";
 import { useNavigate } from 'react-router-dom';
 
@@ -59,16 +60,8 @@ export const Register = () => {
           <p id='error-message'></p>
           <Inputs type='submit' value='CADASTRAR' onClick={teste} />
         </form>
-        <FooterAuth text1='Já possui uma conta?' text2='Faça login!' href='/login' />
+        <FooterAuth text1='Já possui uma conta?' text2='Faça login!' onClick={() => navigate('/login')} />
       </section>
     </div>
   );
 }
-
-// const user = {
-//   "name": "Sample Name - optional",
-//   "email": "sample@mail.com",
-//   "password": "sample",
-//   "role": "sample role",
-//   "restaurant": "sample restaurant"
-// }

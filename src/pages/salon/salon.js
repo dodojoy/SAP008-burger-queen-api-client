@@ -41,7 +41,7 @@ export const Salon = () => {
     <section className="menu">
       <HeaderSalon atendente={userName()} logo={logo} logout={logout} ></HeaderSalon>
       <Menu hour='Café da manhã' product={breakfastMenu}></Menu>
-      <Menu hour='Almoço e janta'product={lunchMenu}></Menu>
+      <Menu hour='Almoço e janta' product={lunchMenu}></Menu>
     </section>
   );
 }
