@@ -1,0 +1,7 @@
+.navigate-btn {
+    background-color: transparent;
+    border: none;
+    color: var(--color-red);
+    font-size: 1rem;
+    text-decoration: underline;
+}
