@@ -10,7 +10,7 @@
 }
 
 .div-auth {
-  background-color: rgba(236, 230, 223, 0.758);
+  background-color: rgba(236, 230, 223, 0.852);
   /* margin: 15vh 25vw; */
   padding: 3vh 3vw;
   width: 50vw;
@@ -46,10 +46,5 @@
 }
 
 .footer-auth {
-  color: var(--color-red);
-}
-
-.footer-auth a {
-  display: block;
   color: var(--color-red);
 }
