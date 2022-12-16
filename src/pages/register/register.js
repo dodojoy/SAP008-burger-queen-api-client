@@ -18,13 +18,13 @@ export const Register = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [role, setRole] = useState('');
   const error = errorMessage.error;
+  const [handleError, setHandleError] = useState('');
   const navigate = useNavigate();
 
   const teste = (e) => {
     e.preventDefault();
-    const tagErrorMessage = document.querySelector('#error-message');
     if (password !== confirmPassword) {
-      tagErrorMessage.innerHTML = 'As senhas devem combinar'
+      setHandleError('As senhas devem combinar');
     } else {
       createUser(name, email, password, role)
         .then((response) => {
@@ -32,14 +32,14 @@ export const Register = () => {
             navigate('/login');
             return response.json();
           }
-          tagErrorMessage.innerHTML = error[0].register[response.status];
+          setHandleError(error[0].register[response.status]);
         })
         .then((data) => {
           if (!data) return;
           console.log(data.token);
           console.log(data);
         })
-        .catch((erro) => console.log(erro));
+        .catch((error) => setHandleError(error));
     }
   }
 
@@ -57,7 +57,7 @@ export const Register = () => {
             <OptionSelect value='Atendente' />
             <OptionSelect value='Cozinheiro(a)' />
           </select>
-          <p id='error-message'></p>
+          <p id='error-message'>{handleError}</p>
           <Inputs type='submit' value='CADASTRAR' onClick={teste} />
         </form>
         <FooterAuth text1='Já possui uma conta?' text2='Faça login!' onClick={() => navigate('/login')} />
