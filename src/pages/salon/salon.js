@@ -28,10 +28,25 @@ export const Salon = () => {
       return <Item key={p.id} name={p.name} price={p.price}></Item>
     }
     return '';
-  })
+  });
 
   const lunchMenu = selectProducts.map((p) => {
     if (p.sub_type === 'hamburguer') {
+      if (p.flavor === null && p.complement === null) {
+        return <Item key={p.id} name={p.name} price={p.price}></Item>
+      }
+      if (p.flavor !== null && p.complement === null) {
+        return <Item key={p.id} name={` ${p.name} ${p.flavor} `} price={p.price}></Item>
+      }
+      if (p.flavor !== null && p.complement !== null) {
+        return <Item key={p.id} name={` ${p.name} ${p.flavor} com ${p.complement} `} price={p.price}></Item>
+      }
+    }
+    return '';
+  });
+
+  const sideMenu = selectProducts.map((p) => {
+    if (p.sub_type === 'side' || p.sub_type === 'drinks') {
       return <Item key={p.id} name={p.name} price={p.price}></Item>
     }
     return '';
@@ -42,6 +57,7 @@ export const Salon = () => {
       <HeaderSalon atendente={userName()} logo={logo} logout={logout} ></HeaderSalon>
       <Menu hour='Café da manhã' product={breakfastMenu}></Menu>
       <Menu hour='Almoço e janta' product={lunchMenu}></Menu>
+      <Menu hour='Acompanhamentos e bebidas' product={sideMenu}></Menu>
     </section>
   );
 }
