@@ -4,4 +4,5 @@
     color: var(--color-red);
     font-size: 1rem;
     text-decoration: underline;
+    display: block;
 }
