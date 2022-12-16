@@ -1,3 +1,5 @@
+import { AiFillPlusCircle } from 'react-icons/ai';
+
 export function Menu({ hour, product }) {
 	return (
         <details className="menu-box">
@@ -12,7 +14,7 @@ export function Item({ name, price}) {
         <div className="item-content">
             <p className="product">{name}</p>
             <p className="price">R$ {price}</p>
-            <button>+</button>
+            <AiFillPlusCircle className='plus-sign'/>
         </div>
 	);
 }
