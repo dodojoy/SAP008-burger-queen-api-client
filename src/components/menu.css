@@ -1,8 +1,7 @@
 .menu-box {
     background-color: var(--color-black);
     min-width: 80vw;
-    height: auto;
-    margin-bottom: 2rem;
+    padding: 1vh 0;
     color: var(--color-white);
     display: flex;
     align-items: center;
@@ -25,4 +24,9 @@
     display: flex;
     height: 3vh;
     width: 80%;
+}
+
+.plus-sign {
+    width: 2rem;
+    height: 2rem;
 }
