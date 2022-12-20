@@ -1,4 +1,4 @@
-import { AiFillPlusCircle } from 'react-icons/ai';
+import { AiOutlinePlus } from 'react-icons/ai';
 
 export function Menu({ hour, product }) {
 	return (
@@ -9,12 +9,12 @@ export function Menu({ hour, product }) {
 	);
 }
 
-export function Item({ name, price}) {
+export function Item({ name, price, handleOnClick }) {
 	return (
         <div className="item-content">
             <p className="product">{name}</p>
             <p className="price">R$ {price}</p>
-            <AiFillPlusCircle className='plus-sign'/>
+            <AiOutlinePlus className='plus-sign' onClick={handleOnClick}/>
         </div>
 	);
 }
