@@ -48,10 +48,10 @@ export const Login = () => {
 			<section className='div-auth'>
 				<img className='logo' src={logo} alt='logo'></img>
 				<form>
-					<Inputs type='email' placeholder='E-MAIL' onChange={(e) => setEmail(e.target.value)} class /><br />
-					<Inputs type='password' placeholder='SENHA' onChange={(e) => setPassword(e.target.value)} /><br />
+					<Inputs className={'input-auth'} type='email' placeholder='E-MAIL' onChange={(e) => setEmail(e.target.value)} class /><br />
+					<Inputs className={'input-auth'} type='password' placeholder='SENHA' onChange={(e) => setPassword(e.target.value)} /><br />
 					<p id='error-message'>{handleError}</p>
-					<Inputs type='submit' value='ENTRAR' onClick={loginEvent}/>
+					<Inputs className={'input-auth'} type='submit' value='ENTRAR' onClick={loginEvent}/>
 				</form>
 				<FooterAuth text1='Não possui uma conta?' text2='Cadastre-se!' onClick={() => navigate('/register')} />
 			</section>

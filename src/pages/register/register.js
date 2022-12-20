@@ -48,17 +48,17 @@ export const Register = () => {
       <section className='div-auth'>
         <img className='logo' src={logo} alt='logo'></img>
         <form>
-          <Inputs type='text' onChange={(e) => setName(e.target.value)} placeholder='NOME' class /><br />
-          <Inputs type='email' onChange={(e) => setEmail(e.target.value)} placeholder='E-MAIL' class /><br />
-          <Inputs type='password' onChange={(e) => setPassword(e.target.value)} placeholder='SENHA' /><br />
-          <Inputs type='password' onChange={(e) => setConfirmPassword(e.target.value)} placeholder='CONFIRMAR SENHA' /><br />
-          <select className="select-register" onChange={(e) => setRole(e.target.value)}  >
+          <Inputs className={'input-auth'} type='text' onChange={(e) => setName(e.target.value)} placeholder='NOME' class /><br />
+          <Inputs className={'input-auth'} type='email' onChange={(e) => setEmail(e.target.value)} placeholder='E-MAIL' class /><br />
+          <Inputs className={'input-auth'} type='password' onChange={(e) => setPassword(e.target.value)} placeholder='SENHA' /><br />
+          <Inputs className={'input-auth'} type='password' onChange={(e) => setConfirmPassword(e.target.value)} placeholder='CONFIRMAR SENHA' /><br />
+          <select className="select-register input-auth" onChange={(e) => setRole(e.target.value)}  >
             <OptionSelect value='SUA FUNÇÃO' />
             <OptionSelect value='Atendente' />
             <OptionSelect value='Cozinheiro(a)' />
           </select>
           <p id='error-message'>{handleError}</p>
-          <Inputs type='submit' value='CADASTRAR' onClick={teste} />
+          <Inputs className={'input-auth'} type='submit' value='CADASTRAR' onClick={teste} />
         </form>
         <FooterAuth text1='Já possui uma conta?' text2='Faça login!' onClick={() => navigate('/login')} />
       </section>
