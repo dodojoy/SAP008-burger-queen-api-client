@@ -8,6 +8,7 @@ import logo from '../../assets/logo.svg';
 import logout from '../../assets/logout.svg';
 import '../../components/header.css';
 import '../../components/menu.css';
+import '../../components/orderCard.css';
 import './salon.css';
 
 export const Salon = () => {
