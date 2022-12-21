@@ -6,6 +6,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 10px;
+}
+
+.product {
+    width: 80%;
 }
 
 .meal-menu-text {

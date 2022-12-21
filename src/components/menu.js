@@ -1,4 +1,4 @@
-import { AiOutlinePlus } from 'react-icons/ai';
+import { AiOutlinePlus } from "react-icons/ai";
 
 export function Menu({ hour, product }) {
 	return (
@@ -14,7 +14,7 @@ export function Item({ name, price, handleOnClick }) {
         <div className="item-content">
             <p className="product">{name}</p>
             <p className="price">R$ {price}</p>
-            <AiOutlinePlus className='plus-sign' onClick={handleOnClick}/>
+            <AiOutlinePlus className="plus-sign" onClick={handleOnClick}/>
         </div>
 	);
 }
