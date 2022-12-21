@@ -1,0 +1,21 @@
+.order-content {
+    background-color: var(--color-red);
+    min-width: 80vw;
+    padding: 1vh 0;
+    color: var(--color-white);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+}
+
+.order-header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.comanda {
+    width: 100%;
+}
