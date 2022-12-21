@@ -60,7 +60,7 @@ export const Register = () => {
           <p id='error-message'>{handleError}</p>
           <Inputs className={'input-auth'} type='submit' value='CADASTRAR' onClick={teste} />
         </form>
-        <FooterAuth text1='Já possui uma conta?' text2='Faça login!' onClick={() => navigate('/login')} />
+        <FooterAuth text1='Já possui uma conta?' text2='Faça login!' route={'/login'} />
       </section>
     </div>
   );

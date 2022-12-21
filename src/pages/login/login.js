@@ -53,7 +53,7 @@ export const Login = () => {
 					<p id='error-message'>{handleError}</p>
 					<Inputs className={'input-auth'} type='submit' value='ENTRAR' onClick={loginEvent}/>
 				</form>
-				<FooterAuth text1='Não possui uma conta?' text2='Cadastre-se!' onClick={() => navigate('/register')} />
+				<FooterAuth text1='Não possui uma conta?' text2='Cadastre-se!' route={'/register'} />
 			</section>
 		</div>
 	);
