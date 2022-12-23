@@ -45,8 +45,17 @@ export const menu = () => {
   })
 };
 
-// return fetch('https://lab-api-bq.up.onrender.app/products', {
-//     method: 'GET',
-//     headers: { 'Content-Type': 'application/json',
-//       'Authorization': token },
-//     }),
+export const createOrder = (client, table, products) => {
+  return fetch('https://lab-api-bq.onrender.com/order', {
+    method: 'POST',
+    headers: { 
+      'Content-Type': 'application/json',
+      'Authorization': token(),
+    },
+    body: JSON.stringify({
+      client: client,
+      table: table,
+      products: products
+    }),
+  })
+};
