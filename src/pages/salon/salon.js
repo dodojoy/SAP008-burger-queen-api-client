@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { menu } from "../../contexts/api";
+import { menu, userName, createOrder, getAllOrders } from "../../contexts/api";
 import { HeaderSalon } from "../../components/header";
 import { Menu, Item } from "../../components/menu";
 import { Order, Items } from "../../components/orderCard";
-import { userName } from "../../contexts/api";
 import logo from '../../assets/logo.svg';
 import logout from '../../assets/logout.svg';
 import '../../components/header.css';
@@ -14,8 +13,10 @@ import './salon.css';
 export const Salon = () => {
   const [selectProducts, setSelectProducts] = useState([]);
   const [selectedProducts, setSelectedProducts] = useState([]);
-  const [quantitie, setQuantitie] = useState(1)
-  console.log(selectedProducts);
+  const [qtd, setQtd] = useState(1);
+  const [clientName, setClientName] = useState('');
+  const [tableNumber, setTableNumber] = useState(1);
+  const [pedido, setPedido] = useState([]);
 
   useEffect(() => {
     menu()
@@ -26,8 +27,16 @@ export const Salon = () => {
       .catch((error) => error);
   }, []);
 
-  console.log(selectProducts);
-
+  useEffect(() => {
+    getAllOrders()
+      .then((response) => response.json())
+      .then((data) => {
+        setPedido(data);
+      })
+  }, []);
+    
+  console.log(pedido);
+  
   const breakfastMenu = selectProducts.map((p) => {
     if (p.sub_type === 'breakfast') {
       return <Item key={p.id} name={p.name} price={p.price} handleOnClick={() => selectedProductsList(p)}></Item>
@@ -65,12 +74,12 @@ export const Salon = () => {
         "name": p.name,
         "flavor": p.flavor,
         "complement": p.complement,
-        "quantitie": 1,
+        "qtd": 1,
         "price": p.price,
         "sub_type": p.sub_type,
       }]);
     } else {
-      setQuantitie(selectedProducts[productId].quantitie += 1);
+      setQtd(selectedProducts[productId].qtd += 1);
     }
   };
   
@@ -87,13 +96,24 @@ export const Salon = () => {
     return <Items name={p.name} price={p.price}></Items>;
   })
 
+  const handleCreateOrder = () => {
+    createOrder(clientName, tableNumber, selectedProducts)
+    .then((response) => response.json())
+    .then(() => {
+      setClientName('');
+      setTableNumber('');
+      setSelectedProducts([]);
+      })
+      .catch((error) => console.log(error));
+  }
+
   return (
     <section className="menu">
       <HeaderSalon atendente={userName()} logo={logo} logout={logout} ></HeaderSalon>
       <Menu hour='Café da manhã' product={breakfastMenu}></Menu>
       <Menu hour='Almoço e janta' product={lunchMenu}></Menu>
       <Menu hour='Acompanhamentos e bebidas' product={sideMenu}></Menu>
-      <Order products={printSelectedProducts}></Order>
+      <Order products={printSelectedProducts} handleOnChangeName={(e) => setClientName(e.target.value)} handleOnChangeTable={(e) => setTableNumber(e.target.value)} handleOnClick={handleCreateOrder}></Order>
     </section>
   );
 }

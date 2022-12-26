@@ -2,17 +2,17 @@ import { Inputs } from "./inputs";
 import { AiOutlinePlus, AiOutlineLine } from "react-icons/ai";
 
 
-export function Order({ number, text, client, tableNumber, numberOrder, products, total, handleOnClick }) {
+export function Order({ number, text, numberOrder, products, total, handleOnClick, handleOnChangeName, handleOnChangeTable }) {
 	return (
         <section className="order-content">
             <div className="order-header">
                 <div> 
-                    <label for="nome-do-cliente">Cliente: </label>
-                    <Inputs type={text} id={"nome-do-cliente"}>{client}</Inputs>
+                    <label>Cliente: </label>
+                    <Inputs type={text} id={"nome-do-cliente"} onChange={handleOnChangeName}></Inputs>
                 </div>
                 <div> 
-                    <label for="mesa-do-cliente">Mesa: </label>
-                    <Inputs type={number} id={"mesa-do-cliente"}>{tableNumber}</Inputs>
+                    <label>Mesa: </label>
+                    <Inputs type={number} id={"mesa-do-cliente"} onChange={handleOnChangeTable}></Inputs>
                 </div>
                 <p>Pedido: {numberOrder}</p>
             </div>
