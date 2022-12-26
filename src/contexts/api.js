@@ -46,7 +46,7 @@ export const menu = () => {
 };
 
 export const createOrder = (client, table, products) => {
-  return fetch('https://lab-api-bq.onrender.com/order', {
+  return fetch('https://lab-api-bq.onrender.com/orders', {
     method: 'POST',
     headers: { 
       'Content-Type': 'application/json',
@@ -59,3 +59,13 @@ export const createOrder = (client, table, products) => {
     }),
   })
 };
+
+export const getAllOrders = () => {
+  return fetch('https://lab-api-bq.onrender.com/orders', {
+    method: 'GET',
+    headers: { 
+      'Content-Type': 'application/json',
+      'Authorization': token(),
+    },
+  })
+}
