@@ -17,19 +17,19 @@ export function Order({ number, text, numberOrder, products, total, handleOnClic
                 <p>Pedido: {numberOrder}</p>
             </div>
             {products}
-            <p>Total: R${total}</p>
-            <button onClick={handleOnClick}>Enviar pedido à cozinha</button>
+            <p className="total-content">Total: R${total}</p>
+            <button className="send-order-btn" onClick={handleOnClick}>Enviar pedido à cozinha</button>
         </section>
 	);
 }
 
-export function Items({ name, price, handleOnClick }) {
+export function Items({ name, price, handleOnClickPlus, handleOnClickLess }) {
 	return (
         <div className="item-content comanda">
             <p className="product">{name}</p>
             <p className="price">R$ {price}</p>
-            <AiOutlinePlus className="plus-sign" onClick={handleOnClick}/>
-            <AiOutlineLine className="plus-sign"/>
+            <AiOutlinePlus className="plus-sign" onClick={handleOnClickPlus}/>
+            <AiOutlineLine className="plus-sign" onClick={handleOnClickLess}/>
         </div>
 	);
 }
