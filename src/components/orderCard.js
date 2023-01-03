@@ -8,11 +8,11 @@ export function Order({ number, text, numberOrder, products, total, handleOnClic
             <div className="order-header">
                 <div> 
                     <label>Cliente: </label>
-                    <Inputs type={text} id={"nome-do-cliente"} onChange={handleOnChangeName}></Inputs>
+                    <Inputs className="cart-input" type={text} id={"nome-do-cliente"} onChange={handleOnChangeName}></Inputs>
                 </div>
                 <div> 
                     <label>Mesa: </label>
-                    <Inputs type={number} id={"mesa-do-cliente"} onChange={handleOnChangeTable}></Inputs>
+                    <Inputs className="cart-input" type={number} id={"mesa-do-cliente"} onChange={handleOnChangeTable}></Inputs>
                 </div>
                 <p>Pedido: {numberOrder}</p>
             </div>
