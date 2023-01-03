@@ -36,6 +36,7 @@ export const Salon = () => {
   }, []);
     
   console.log(pedido);
+  console.log(selectedProducts);
   
   const breakfastMenu = selectProducts.map((p) => {
     if (p.sub_type === 'breakfast') {
@@ -86,14 +87,14 @@ export const Salon = () => {
   const printSelectedProducts = selectedProducts.map((p) => {
     if (p.sub_type === 'hamburguer'){
       if (p.flavor === null && p.complement === null) {
-        return <Items key={p.id} name={p.name} price={p.price}></Items>
+        return <Items key={p.id} name={p.name} price={p.price} handleOnClickPlus={() => selectedProductsList(p)}></Items>
       } else if (p.flavor !== null && p.complement === null) {
-        return <Items key={p.id} name={` ${p.name} ${p.flavor} `} price={p.price}></Items>
+        return <Items key={p.id} name={` ${p.name} ${p.flavor} `} price={p.price} handleOnClickPlus={() => selectedProductsList(p)}></Items>
       } else if (p.flavor !== null && p.complement !== null) {
-        return <Items key={p.id} name={` ${p.name} ${p.flavor} com ${p.complement} `} price={p.price}></Items>
+        return <Items key={p.id} name={` ${p.name} ${p.flavor} com ${p.complement} `} price={p.price} handleOnClickPlus={() => selectedProductsList(p)}></Items>
       }
     }
-    return <Items name={p.name} price={p.price}></Items>;
+    return <Items name={p.name} price={p.price} handleOnClickPlus={() => selectedProductsList(p)}></Items>;
   })
 
   const handleCreateOrder = () => {
@@ -117,5 +118,3 @@ export const Salon = () => {
     </section>
   );
 }
-
-// product={breakfastMenu} linha 38
