@@ -37,3 +37,9 @@
     color: var(--color-black);
     /* text-align: end; */
 }
+
+.cart-input {
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px var(--color-white);
+}
