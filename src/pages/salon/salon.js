@@ -83,18 +83,26 @@ export const Salon = () => {
       setQtd(selectedProducts[productId].qtd += 1);
     }
   };
+
+  function decreaseProduct(p) {
+    const productId = selectedProducts.findIndex((e) => e.id === p.id);
+    setQtd(selectedProducts[productId].qtd -= 1);
+    if (p.qtd === 0) {
+      return selectedProducts.splice(productId, 1);
+    }
+  }
   
   const printSelectedProducts = selectedProducts.map((p) => {
     if (p.sub_type === 'hamburguer'){
       if (p.flavor === null && p.complement === null) {
-        return <Items key={p.id} name={p.name} price={p.price} handleOnClickPlus={() => selectedProductsList(p)}></Items>
+        return <Items key={p.id} name={p.name} price={p.price} handleOnClickPlus={() => selectedProductsList(p)} handleOnClickLess={() => decreaseProduct(p)}></Items>
       } else if (p.flavor !== null && p.complement === null) {
-        return <Items key={p.id} name={` ${p.name} ${p.flavor} `} price={p.price} handleOnClickPlus={() => selectedProductsList(p)}></Items>
+        return <Items key={p.id} name={` ${p.name} ${p.flavor} `} price={p.price} handleOnClickPlus={() => selectedProductsList(p)}  handleOnClickLess={() => decreaseProduct(p)}></Items>
       } else if (p.flavor !== null && p.complement !== null) {
-        return <Items key={p.id} name={` ${p.name} ${p.flavor} com ${p.complement} `} price={p.price} handleOnClickPlus={() => selectedProductsList(p)}></Items>
+        return <Items key={p.id} name={` ${p.name} ${p.flavor} com ${p.complement} `} price={p.price} handleOnClickPlus={() => selectedProductsList(p)}  handleOnClickLess={() => decreaseProduct(p)}></Items>
       }
     }
-    return <Items name={p.name} price={p.price} handleOnClickPlus={() => selectedProductsList(p)}></Items>;
+    return <Items name={p.name} price={p.price} handleOnClickPlus={() => selectedProductsList(p)}  handleOnClickLess={() => decreaseProduct(p)}></Items>;
   })
 
   const handleCreateOrder = () => {
@@ -107,6 +115,7 @@ export const Salon = () => {
       })
       .catch((error) => console.log(error));
   }
+
 
   return (
     <section className="menu">
