@@ -23,11 +23,14 @@ export function Order({ number, text, numberOrder, products, total, handleOnClic
 	);
 }
 
-export function Items({ name, price, handleOnClickPlus, handleOnClickLess }) {
+export function Items({ name, price, handleOnClickPlus, handleOnClickLess, quantity}) {
 	return (
         <div className="item-content comanda">
             <p className="product">{name}</p>
             <p className="price">R$ {price}</p>
+            <p className="quantity">x{quantity}</p>
+            <p className="final-price">R$ {quantity * price}</p>
+
             <AiOutlinePlus className="plus-sign" onClick={handleOnClickPlus}/>
             <AiOutlineLine className="plus-sign" onClick={handleOnClickLess}/>
         </div>
