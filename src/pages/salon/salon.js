@@ -35,74 +35,75 @@ export const Salon = () => {
       })
   }, []);
     
-  console.log(pedido);
+  // console.log(pedido);
   console.log(selectedProducts);
   
-  const breakfastMenu = selectProducts.map((p) => {
-    if (p.sub_type === 'breakfast') {
-      return <Item key={p.id} name={p.name} price={p.price} handleOnClick={() => selectedProductsList(p)}></Item>
+  const breakfastMenu = selectProducts.map((product) => {
+    if (product.sub_type === 'breakfast') {
+      return <Item key={product.id} name={product.name} price={product.price} handleOnClick={() => selectedProductsList(product)}></Item>
     }
     return '';
   });
 
-  const lunchMenu = selectProducts.map((p) => {
-    if (p.sub_type === 'hamburguer') {
-      if (p.flavor === null && p.complement === null) {
-        return <Item key={p.id} name={p.name} price={p.price} handleOnClick={() => selectedProductsList(p)}></Item>
+  const lunchMenu = selectProducts.map((product) => {
+    if (product.sub_type === 'hamburguer') {
+      if (product.flavor === null && product.complement === null) {
+        return <Item key={product.id} name={product.name} price={product.price} handleOnClick={() => selectedProductsList(product)}></Item>
       }
-      if (p.flavor !== null && p.complement === null) {
-        return <Item key={p.id} name={` ${p.name} ${p.flavor} `} price={p.price} handleOnClick={() => selectedProductsList(p)}></Item>
+      if (product.flavor !== null && product.complement === null) {
+        return <Item key={product.id} name={` ${product.name} ${product.flavor} `} price={product.price} handleOnClick={() => selectedProductsList(product)}></Item>
       }
-      if (p.flavor !== null && p.complement !== null) {
-        return <Item key={p.id} name={` ${p.name} ${p.flavor} com ${p.complement} `} price={p.price} handleOnClick={() => selectedProductsList(p)}></Item>
+      if (product.flavor !== null && product.complement !== null) {
+        return <Item key={product.id} name={` ${product.name} ${product.flavor} com ${product.complement} `} price={product.price} handleOnClick={() => selectedProductsList(product)}></Item>
       }
     }
     return '';
   });
 
-  const sideMenu = selectProducts.map((p) => {
-    if (p.sub_type === 'side' || p.sub_type === 'drinks') {
-      return <Item key={p.id} name={p.name} price={p.price} handleOnClick={() => selectedProductsList(p)}></Item>
+  const sideMenu = selectProducts.map((product) => {
+    if (product.sub_type === 'side' || product.sub_type === 'drinks') {
+      return <Item key={product.id} name={product.name} price={product.price} handleOnClick={() => selectedProductsList(product)}></Item>
     }
     return '';
   })
 
-  function selectedProductsList(p) {
-    const productId = selectedProducts.findIndex((e) => e.id === p.id);
-    if (productId === -1) {
+  function selectedProductsList(product) {
+    const productIndex = selectedProducts.findIndex((e) => e.id === product.id);
+    if (productIndex === -1) {
       return setSelectedProducts([...selectedProducts, {
-        "id": p.id,
-        "name": p.name,
-        "flavor": p.flavor,
-        "complement": p.complement,
+        "id": product.id,
+        "name": product.name,
+        "flavor": product.flavor,
+        "complement": product.complement,
         "qtd": 1,
-        "price": p.price,
-        "sub_type": p.sub_type,
+        "price": product.price,
+        "sub_type": product.sub_type,
       }]);
     } else {
-      setQtd(selectedProducts[productId].qtd += 1);
+      setQtd(selectedProducts[productIndex].qtd += 1);
     }
   };
 
-  function decreaseProduct(p) {
-    const productId = selectedProducts.findIndex((e) => e.id === p.id);
-    setQtd(selectedProducts[productId].qtd -= 1);
-    if (p.qtd === 0) {
-      return selectedProducts.splice(productId, 1);
+  function decreaseProduct(product) {
+    const productIndex = selectedProducts.findIndex((e) => e.id === product.id);
+    setQtd(selectedProducts[productIndex].qtd -= 1);
+    if (product.qtd === 0) {
+      console.log(selectedProducts);
+      return selectedProducts.splice(productIndex, 1);
     }
   }
   
-  const printSelectedProducts = selectedProducts.map((p) => {
-    if (p.sub_type === 'hamburguer'){
-      if (p.flavor === null && p.complement === null) {
-        return <Items key={p.id} name={p.name} price={p.price} handleOnClickPlus={() => selectedProductsList(p)} handleOnClickLess={() => decreaseProduct(p)}></Items>
-      } else if (p.flavor !== null && p.complement === null) {
-        return <Items key={p.id} name={` ${p.name} ${p.flavor} `} price={p.price} handleOnClickPlus={() => selectedProductsList(p)}  handleOnClickLess={() => decreaseProduct(p)}></Items>
-      } else if (p.flavor !== null && p.complement !== null) {
-        return <Items key={p.id} name={` ${p.name} ${p.flavor} com ${p.complement} `} price={p.price} handleOnClickPlus={() => selectedProductsList(p)}  handleOnClickLess={() => decreaseProduct(p)}></Items>
+  const printSelectedProducts = selectedProducts.map((product) => {
+    if (product.sub_type === 'hamburguer'){
+      if (product.flavor === null && product.complement === null) {
+        return <Items key={product.id} quantity={product.qtd} name={product.name} price={product.price} handleOnClickPlus={() => selectedProductsList(product)} handleOnClickLess={() => decreaseProduct(product)}></Items>
+      } else if (product.flavor !== null && product.complement === null) {
+        return <Items key={product.id} quantity={product.qtd} name={` ${product.name} ${product.flavor} `} price={product.price} handleOnClickPlus={() => selectedProductsList(product)}  handleOnClickLess={() => decreaseProduct(product)}></Items>
+      } else if (product.flavor !== null && product.complement !== null) {
+        return <Items key={product.id} quantity={product.qtd} name={` ${product.name} ${product.flavor} com ${product.complement} `} price={product.price} handleOnClickPlus={() => selectedProductsList(product)}  handleOnClickLess={() => decreaseProduct(product)}></Items>
       }
     }
-    return <Items name={p.name} price={p.price} handleOnClickPlus={() => selectedProductsList(p)}  handleOnClickLess={() => decreaseProduct(p)}></Items>;
+    return <Items key={product.id} quantity={product.qtd} name={product.name} price={product.price} handleOnClickPlus={() => selectedProductsList(product)}  handleOnClickLess={() => decreaseProduct(product)}></Items>;
   })
 
   const handleCreateOrder = () => {
@@ -120,9 +121,9 @@ export const Salon = () => {
   return (
     <section className="menu">
       <HeaderSalon atendente={userName()} logo={logo} logout={logout} ></HeaderSalon>
-      <Menu hour='Café da manhã' product={breakfastMenu}></Menu>
-      <Menu hour='Almoço e janta' product={lunchMenu}></Menu>
-      <Menu hour='Acompanhamentos e bebidas' product={sideMenu}></Menu>
+      <Menu dayShift='Café da manhã' product={breakfastMenu}></Menu>
+      <Menu dayShift='Almoço e janta' product={lunchMenu}></Menu>
+      <Menu dayShift='Acompanhamentos e bebidas' product={sideMenu}></Menu>
       <Order products={printSelectedProducts} handleOnChangeName={(e) => setClientName(e.target.value)} handleOnChangeTable={(e) => setTableNumber(e.target.value)} handleOnClick={handleCreateOrder}></Order>
     </section>
   );
