@@ -1,9 +1,9 @@
 import { AiOutlinePlus } from "react-icons/ai";
 
-export function Menu({ hour, product }) {
+export function Menu({ dayShift, product }) {
 	return (
         <details className="menu-box">
-            <summary className="meal-menu-text">{hour}</summary>
+            <summary className="meal-menu-text">{dayShift}</summary>
             {product}
         </details>
 	);
