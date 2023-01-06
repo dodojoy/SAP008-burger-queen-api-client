@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { menu, userName, createOrder, getAllOrders } from "../../contexts/api";
 import { HeaderSalon } from "../../components/header";
-import { Menu, Item } from "../../components/menu";
+import { Menu } from "../../components/menu";
 import { Order, Items } from "../../components/orderCard";
 import logo from '../../assets/logo.svg';
 import logout from '../../assets/logout.svg';
@@ -18,6 +18,7 @@ export const Salon = () => {
   const [tableNumber, setTableNumber] = useState(1);
   const [pedido, setPedido] = useState([]);
 
+  
   useEffect(() => {
     menu()
       .then((response) => response.json())
@@ -29,43 +30,56 @@ export const Salon = () => {
 
   useEffect(() => {
     getAllOrders()
-      .then((response) => response.json())
-      .then((data) => {
-        setPedido(data);
-      })
+    .then((response) => response.json())
+    .then((data) => {
+      setPedido(data);
+    })
   }, []);
-    
-  // console.log(pedido);
-  console.log(selectedProducts);
   
-  const breakfastMenu = selectProducts.map((product) => {
-    if (product.sub_type === 'breakfast') {
-      return <Item key={product.id} name={product.name} price={product.price} handleOnClick={() => selectedProductsList(product)}></Item>
-    }
-    return '';
-  });
+  console.log(selectProducts);
+  console.log(qtd)
+  console.log(pedido)
+  
+  // const productsHamburguer = selectAllProducts
+  //   .filter(product => product.sub_type === 'hamburguer')
+  //   .map((p) => {
+  
+  // const breakfastMenu = selectProducts
+  //   .filter(product => product.sub_type === 'breakfast')
+  //   .map(product => <Item key={product.id} name={product.name} price={product.price} handleOnClick={() => selectedProductsList(product)}></Item>);
 
-  const lunchMenu = selectProducts.map((product) => {
-    if (product.sub_type === 'hamburguer') {
-      if (product.flavor === null && product.complement === null) {
-        return <Item key={product.id} name={product.name} price={product.price} handleOnClick={() => selectedProductsList(product)}></Item>
-      }
-      if (product.flavor !== null && product.complement === null) {
-        return <Item key={product.id} name={` ${product.name} ${product.flavor} `} price={product.price} handleOnClick={() => selectedProductsList(product)}></Item>
-      }
-      if (product.flavor !== null && product.complement !== null) {
-        return <Item key={product.id} name={` ${product.name} ${product.flavor} com ${product.complement} `} price={product.price} handleOnClick={() => selectedProductsList(product)}></Item>
-      }
-    }
-    return '';
-  });
+  // const breakfastMenu = selectProducts.map((product) => {
+  //   if (product.sub_type === 'breakfast') {
+  //     return <Item key={product.id} name={product.name} price={product.price} handleOnClick={() => selectedProductsList(product)}></Item>
+  //   }
+  //   return '';
+  // });
 
-  const sideMenu = selectProducts.map((product) => {
-    if (product.sub_type === 'side' || product.sub_type === 'drinks') {
-      return <Item key={product.id} name={product.name} price={product.price} handleOnClick={() => selectedProductsList(product)}></Item>
-    }
-    return '';
-  })
+  const breakfastMenu = product => product.sub_type === 'breakfast';
+  const lunchMenu = product => product.sub_type === 'hamburguer';
+  const sideMenu = product => product.sub_type === 'side' || product.sub_type === 'drinks';
+
+  // const lunchMenu = selectProducts.map((product) => {
+  //   if (product.sub_type === 'hamburguer') {
+  //     if (product.flavor === null && product.complement === null) {
+  //       return <Item key={product.id} name={product.name} price={product.price} handleOnClick={() => selectedProductsList(product)}></Item>
+  //     }
+  //     if (product.flavor !== null && product.complement === null) {
+  //       return <Item key={product.id} name={` ${product.name} ${product.flavor} `} price={product.price} handleOnClick={() => selectedProductsList(product)}></Item>
+  //     }
+  //     if (product.flavor !== null && product.complement !== null) {
+  //       return <Item key={product.id} name={` ${product.name} ${product.flavor} com ${product.complement} `} price={product.price} handleOnClick={() => selectedProductsList(product)}></Item>
+  //     }
+  //   }
+  //   return '';
+  // });
+
+  // const sideMenu = selectProducts.map((product) => {
+  //   if (product.sub_type === 'side' || product.sub_type === 'drinks') {
+  //     return <Item key={product.id} name={product.name} price={product.price} handleOnClick={() => selectedProductsList(product)}></Item>
+  //   }
+  //   return '';
+  // })
 
   function selectedProductsList(product) {
     const productIndex = selectedProducts.findIndex((e) => e.id === product.id);
@@ -121,9 +135,9 @@ export const Salon = () => {
   return (
     <section className="menu">
       <HeaderSalon atendente={userName()} logo={logo} logout={logout} ></HeaderSalon>
-      <Menu dayShift='Café da manhã' product={breakfastMenu}></Menu>
-      <Menu dayShift='Almoço e janta' product={lunchMenu}></Menu>
-      <Menu dayShift='Acompanhamentos e bebidas' product={sideMenu}></Menu>
+      <Menu filterFunction={breakfastMenu} productList={selectProducts} dayShift='Café da manhã' handleOnClick={selectedProductsList}></Menu>
+      <Menu filterFunction={lunchMenu} productList={selectProducts} dayShift='Almoço e janta' handleOnClick={selectedProductsList}></Menu>
+      <Menu filterFunction={sideMenu} productList={selectProducts} dayShift='Acompanhamentos e bebidas' handleOnClick={selectedProductsList}></Menu>
       <Order products={printSelectedProducts} handleOnChangeName={(e) => setClientName(e.target.value)} handleOnChangeTable={(e) => setTableNumber(e.target.value)} handleOnClick={handleCreateOrder}></Order>
     </section>
   );
