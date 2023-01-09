@@ -1,4 +1,6 @@
 import { AiOutlinePlus } from "react-icons/ai";
+import { getProductName } from "../productName/getProductName";
+
 
 export function MenuBox({ dayShift, product }) {
     return (
@@ -23,7 +25,7 @@ export function Menu({ productList, filterFunction, handleOnClick, dayShift }) {
 export function Item({ product, handleOnClick }) {
     return (
         <div className="item-content">
-            <p className="product">{product.name}</p>
+            <p className="product">{getProductName(product)}</p>
             <p className="price">R$ {product.price}</p>
             <AiOutlinePlus className="plus-sign" onClick={handleOnClick} />
         </div>
