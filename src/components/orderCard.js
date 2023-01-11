@@ -3,7 +3,7 @@ import { AiOutlinePlus, AiOutlineLine } from "react-icons/ai";
 import { getProductName } from "../productName/getProductName";
 
 
-export function Order({ number, text, numberOrder, children, total, handleOnClick, handleOnChangeName, handleOnChangeTable }) {
+export function Order({ number, text, numberOrder, children, totalPrice, handleOnClick, handleOnChangeName, handleOnChangeTable }) {
 	return (
         <section className="order-content">
             <div className="order-header">
@@ -18,7 +18,7 @@ export function Order({ number, text, numberOrder, children, total, handleOnClic
                 <p>Pedido: {numberOrder}</p>
             </div>
             {children}
-            <p className="total-content">Total: R${total}</p>
+            <p className="total-content">Total: R${totalPrice}</p>
             <button className="send-order-btn" onClick={handleOnClick}>Enviar pedido à cozinha</button>
         </section>
 	);
