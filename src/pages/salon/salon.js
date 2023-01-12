@@ -3,18 +3,18 @@ import { menu, userName, createOrder} from "../../contexts/api";
 import { HeaderSalon } from "../../components/header";
 import { Menu } from "../../components/menu";
 import { Order, Items } from "../../components/orderCard";
-import logo from '../../assets/logo.svg';
-import logout from '../../assets/logout.svg';
 import '../../components/header.css';
 import '../../components/menu.css';
 import '../../components/orderCard.css';
 import './salon.css';
+import { useNavigate } from 'react-router-dom';
 
 export const Salon = () => {
   const [selectProducts, setSelectProducts] = useState([]);
   const [selectedProducts, setSelectedProducts] = useState([]);
   const [clientName, setClientName] = useState('');
   const [tableNumber, setTableNumber] = useState(1);
+  const navigate = useNavigate();
 
   useEffect(() => {
     menu()
@@ -24,6 +24,10 @@ export const Salon = () => {
       })
       .catch((error) => error);
   }, []);
+
+  function handleLogout() {
+    navigate('/login')
+  }
 
   const breakfastMenu = product => product.sub_type === 'breakfast';
   const lunchMenu = product => product.sub_type === 'hamburguer';
@@ -68,7 +72,7 @@ export const Salon = () => {
 
   return (
     <section className="menu">
-      <HeaderSalon atendente={userName()} logo={logo} logout={logout} ></HeaderSalon>
+      <HeaderSalon role={'Atendente'} nameRole={userName()} handleOnClick={handleLogout}></HeaderSalon>
       <Menu filterFunction={breakfastMenu} productList={selectProducts} dayShift='Café da manhã' handleOnClick={selectedProductsList}></Menu>
       <Menu filterFunction={lunchMenu} productList={selectProducts} dayShift='Almoço e janta' handleOnClick={selectedProductsList}></Menu>
       <Menu filterFunction={sideMenu} productList={selectProducts} dayShift='Acompanhamentos e bebidas' handleOnClick={selectedProductsList}></Menu>
