@@ -25,9 +25,9 @@ export function Order({ number, text, numberOrder, children, totalPrice, handleO
 }
 
 export function Items({ handleOnClickPlus, handleOnClickLess, product }) {
-    const { price, qtd } = product
+    const { price, qtd } = product;
     return (
-        <div className="item-content comanda">
+        <div className="item-content cart">
             <p className="product">{getProductName(product)}</p>
             <p className="price">R$ {price}</p>
             <p className="quantity">x{qtd}</p>
