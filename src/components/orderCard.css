@@ -17,13 +17,12 @@
     padding-bottom: 0.8rem;
 }
 
-.comanda {
+.cart {
     width: 100%;
 }
 
 .send-order-btn {
     width: 100%;
-    /* height: 3vh; */
     border: none;
     background-color: var(--color-red);
     color: var(--color-white);
