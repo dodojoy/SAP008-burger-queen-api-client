@@ -3,7 +3,7 @@ import { AiOutlinePlus, AiOutlineLine } from "react-icons/ai";
 import { getProductName } from "../productName/getProductName";
 
 
-export function Order({ number, text, numberOrder, children, totalPrice, handleOnClick, handleOnChangeName, handleOnChangeTable }) {
+export function Order({ number, text, children, totalPrice, handleOnClick, handleOnChangeName, handleOnChangeTable }) {
 	return (
         <section className="order-content">
             <div className="order-header">
@@ -15,7 +15,6 @@ export function Order({ number, text, numberOrder, children, totalPrice, handleO
                     <label>Mesa: </label>
                     <Inputs className="cart-input" type={number} id={"mesa-do-cliente"} onChange={handleOnChangeTable}></Inputs>
                 </div>
-                <p>Pedido: {numberOrder}</p>
             </div>
             {children}
             <p className="total-content">Total: R${totalPrice}</p>

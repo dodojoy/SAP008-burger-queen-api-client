@@ -44,7 +44,7 @@ export const Login = () => {
 	};
 
 	return (
-		<div className="login-content">
+		<div className="box-content">
 			<section className='div-auth'>
 				<img className='logo' src={logo} alt='logo'></img>
 				<form>
