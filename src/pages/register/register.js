@@ -5,7 +5,6 @@ import { OptionSelect } from "../../components/select";
 import logo from '../../assets/logo.svg';
 import '../login/login.css';
 import '../../style.css';
-import './register.css';
 import '../../components/footer.css';
 import { createUser } from '../../contexts/api';
 import { errorMessage } from "../../errors/error";
@@ -44,7 +43,7 @@ export const Register = () => {
   }
 
   return (
-    <div className="register-content">
+    <div className="box-content">
       <section className='div-auth'>
         <img className='logo' src={logo} alt='logo'></img>
         <form>

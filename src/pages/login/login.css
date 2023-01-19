@@ -1,19 +1,8 @@
-.login-content {
-  width: 100vw;
-  height: 100vh;
-  background-image: url(../../assets/background.jpg);
-  background-size: cover;
-  background-attachment: fixed;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .div-auth {
   background-color: rgba(236, 230, 223, 0.852);
   /* margin: 15vh 25vw; */
   padding: 3vh 3vw;
-  width: 50vw;
+  width: 30rem;
   border-radius: 10px;
 }
 
@@ -21,8 +10,8 @@
   margin: 1vh 0;
   background-color: var(--color-white);
   border: none;
-  width: 29vw;
-  height: 3vh;
+  width: 20rem;
+  height: 3rem;
   color: var(--color-red);
   font-size: 1rem;
   font-weight: 400;
@@ -38,7 +27,7 @@
   margin: 1vh 0;
   background-color: var(--color-red);
   border: 1px solid;
-  width: 15vw;
+  width: 8rem;
   border-radius: 5px;
   color: var(--color-white);
   font-size: 1rem;

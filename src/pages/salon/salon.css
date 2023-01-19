@@ -1,6 +1,5 @@
 .menu {
     width: 100vw;
-    height: auto;
     min-height: 100vh;
     background-image: url(../../assets/background.svg);
     background-size: cover;
