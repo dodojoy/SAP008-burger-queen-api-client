@@ -1,6 +1,6 @@
 .order-content {
     background-color: var(--color-red);
-    min-width: 80vw;
+    min-width: 40rem;
     padding: 1vh 0;
     color: var(--color-white);
     display: flex;
@@ -32,13 +32,24 @@
 
 .total-content {
     width: 100%;
+    height: 3rem;
     background-color: var(--color-white);
     color: var(--color-black);
-    /* text-align: end; */
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    padding-right: 2rem;
 }
 
 .cart-input {
     background-color: transparent;
     border: none;
     border-bottom: 1px var(--color-white);
+    outline: none;
+    color: var(--color-white);
+}
+
+.product {
+    width: 60%;
 }
