@@ -5,7 +5,7 @@ import { getProductName } from "../productName/getProductName";
 
 export function Order({ number, text, children, totalPrice, handleOnClick, handleOnChangeName, handleOnChangeTable }) {
 	return (
-        <section className="order-content">
+        <div className="order-content">
             <div className="order-header">
                 <div> 
                     <label>Cliente: </label>
@@ -19,7 +19,7 @@ export function Order({ number, text, children, totalPrice, handleOnClick, handl
             {children}
             <p className="total-content">Total: R${totalPrice}</p>
             <button className="send-order-btn" onClick={handleOnClick}>Enviar pedido à cozinha</button>
-        </section>
+        </div>
 	);
 }
 
