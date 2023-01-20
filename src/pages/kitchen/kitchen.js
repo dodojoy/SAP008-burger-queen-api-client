@@ -39,11 +39,16 @@ export const Kitchen = () => {
   }
 
   return (
-    <section className="menu">
+    <div className="kitchen-page">
+      <div className="bg-salon"></div>
       <HeaderSalon role={'Cozinheiro(a)'} nameRole={userName()} handleOnClick={handleLogout}></HeaderSalon>
-      <FilteredOrderProduct orderStatus={'Preparar'} dayShift={'PEDIDOS PENDENTES'} orderList={orders} filterFunction={pendingOrders} statusFunction={toStatusPreparing}></FilteredOrderProduct>
-      <FilteredOrderProduct orderStatus={'Finalizar'} dayShift={'PEDIDOS EM PRODUÇÃO'} orderList={orders} filterFunction={preparingOrders} statusFunction={toStatusDone}></FilteredOrderProduct>
-      <FilteredOrderProduct dayShift={'PEDIDOS FINALIZADOS'} orderList={orders} filterFunction={finishedOrders}></FilteredOrderProduct>
-    </section>
+      <section className="menu">
+        <div className="container">
+          <FilteredOrderProduct orderStatus={'Preparar'} dayShift={'PEDIDOS PENDENTES'} orderList={orders} filterFunction={pendingOrders} statusFunction={toStatusPreparing}></FilteredOrderProduct>
+          <FilteredOrderProduct orderStatus={'Finalizar'} dayShift={'PEDIDOS EM PRODUÇÃO'} orderList={orders} filterFunction={preparingOrders} statusFunction={toStatusDone}></FilteredOrderProduct>
+          <FilteredOrderProduct dayShift={'PEDIDOS FINALIZADOS'} orderList={orders} filterFunction={finishedOrders}></FilteredOrderProduct>
+        </div>
+      </section>
+    </div>
   );
 }
