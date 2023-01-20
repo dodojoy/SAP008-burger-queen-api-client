@@ -1,7 +1,7 @@
 .menu-box {
+    width: 100%;
     background-color: var(--color-black);
-    min-width: 40rem;
-    padding: 1vh 0;
+    padding: 0.5rem 0;
     color: var(--color-white);
     display: flex;
     justify-content: center;
@@ -15,8 +15,7 @@
 .meal-menu-text {
     margin: 0;
     font-size: 1.5rem;
-    height: 4vh;
-
+    padding-bottom: 0.3rem;
 }
 
 .item-content {

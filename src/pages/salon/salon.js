@@ -71,14 +71,19 @@ export const Salon = () => {
 
 
   return (
-    <section className="menu">
+    <div className="salon-page">
+      <div className="bg-salon"></div>
       <HeaderSalon role={'Atendente'} nameRole={userName()} handleOnClick={handleLogout}></HeaderSalon>
-      <Menu filterFunction={breakfastMenu} productList={selectProducts} dayShift='Café da manhã' handleOnClick={selectedProductsList}></Menu>
-      <Menu filterFunction={lunchMenu} productList={selectProducts} dayShift='Almoço e janta' handleOnClick={selectedProductsList}></Menu>
-      <Menu filterFunction={sideMenu} productList={selectProducts} dayShift='Acompanhamentos e bebidas' handleOnClick={selectedProductsList}></Menu>
-      <Order handleOnChangeName={(e) => setClientName(e.target.value)} handleOnChangeTable={(e) => setTableNumber(e.target.value)} handleOnClick={handleCreateOrder} totalPrice={selectedProducts.reduce((result, product) => result + product.price * product.qtd, 0)}>
-        <PrintSelectedProducts products={[...selectedProducts]} />
-      </Order>
-    </section>
+      <section className="menu">
+        <div className="container">
+          <Menu filterFunction={breakfastMenu} productList={selectProducts} dayShift='Café da manhã' handleOnClick={selectedProductsList}></Menu>
+          <Menu filterFunction={lunchMenu} productList={selectProducts} dayShift='Almoço e janta' handleOnClick={selectedProductsList}></Menu>
+          <Menu filterFunction={sideMenu} productList={selectProducts} dayShift='Acompanhamentos e bebidas' handleOnClick={selectedProductsList}></Menu>
+          <Order handleOnChangeName={(e) => setClientName(e.target.value)} handleOnChangeTable={(e) => setTableNumber(e.target.value)} handleOnClick={handleCreateOrder} totalPrice={selectedProducts.reduce((result, product) => result + product.price * product.qtd, 0)}>
+            <PrintSelectedProducts products={[...selectedProducts]} />
+          </Order>
+        </div>
+      </section>
+    </div>
   );
 }
