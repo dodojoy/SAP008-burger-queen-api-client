@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { menu, userName, createOrder} from "../../contexts/api";
+import { menu, userName, createOrder, getAllOrders, updateStatus} from "../../contexts/api";
 import { HeaderSalon } from "../../components/header";
-import { Menu } from "../../components/menu";
+import { Menu, PrintFinishedOrder } from "../../components/menu";
 import { Order, Items } from "../../components/orderCard";
+import { FilteredOrderProduct } from "../../components/kitchenProduct";
 import '../../components/header.css';
 import '../../components/menu.css';
 import '../../components/orderCard.css';
 import './salon.css';
+import { BiCheckboxChecked } from "react-icons/bi";
 import { useNavigate } from 'react-router-dom';
 
 export const Salon = () => {
@@ -14,6 +16,7 @@ export const Salon = () => {
   const [selectedProducts, setSelectedProducts] = useState([]);
   const [clientName, setClientName] = useState('');
   const [tableNumber, setTableNumber] = useState(1);
+  const [orders, setOrders] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -25,6 +28,13 @@ export const Salon = () => {
       .catch((error) => error);
   }, []);
 
+  useEffect(() => {
+    getAllOrders()
+      .then((response) => response.json())
+      .then((data) => setOrders(data))
+      .catch((error) => console.log(error));
+  }, []);
+
   function handleLogout() {
     navigate('/login')
   }
@@ -32,6 +42,8 @@ export const Salon = () => {
   const breakfastMenu = product => product.sub_type === 'breakfast';
   const lunchMenu = product => product.sub_type === 'hamburguer';
   const sideMenu = product => product.sub_type === 'side' || product.sub_type === 'drinks';
+  const doneOrders = product => product.status === 'done';
+  const deliveredOrders = product => product.status === 'finished';
 
   function selectedProductsList(product) {
     const productIndex = selectedProducts.findIndex((e) => e.id === product.id);
@@ -69,6 +81,11 @@ export const Salon = () => {
       .catch((error) => console.log(error));
   }
 
+  function toStatusFinished(order) {
+    updateStatus('finished', order.id)
+      .then(() => window.location.reload());
+  }
+
 
   return (
     <div className="salon-page">
@@ -82,6 +99,8 @@ export const Salon = () => {
           <Order handleOnChangeName={(e) => setClientName(e.target.value)} handleOnChangeTable={(e) => setTableNumber(e.target.value)} handleOnClick={handleCreateOrder} totalPrice={selectedProducts.reduce((result, product) => result + product.price * product.qtd, 0)}>
             <PrintSelectedProducts products={[...selectedProducts]} />
           </Order>
+          <FilteredOrderProduct dayShift={'Pedidos finalizados'} orderList={orders} filterFunction={doneOrders} orderStatus={'Entregar pedido'} statusFunction={toStatusFinished}></FilteredOrderProduct>
+          <PrintFinishedOrder sideTag={<p className="align-tag"><BiCheckboxChecked className='checkbox'></BiCheckboxChecked>Entregue</p>} dayShift={'Pedidos entregues'} orderList={orders} filterFunction={deliveredOrders}></PrintFinishedOrder>
         </div>
       </section>
     </div>
