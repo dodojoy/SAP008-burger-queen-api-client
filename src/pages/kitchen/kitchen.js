@@ -5,6 +5,7 @@ import { updateStatus, userName } from "../../contexts/api";
 import { useNavigate } from 'react-router-dom';
 import { getAllOrders } from "../../contexts/api";
 import { FilteredOrderProduct } from "../../components/kitchenProduct";
+import { PrintFinishedOrder } from "../../components/menu";
 import '../../components/kitchenProduct.css';
 
 export const Kitchen = () => {
@@ -46,7 +47,7 @@ export const Kitchen = () => {
         <div className="container">
           <FilteredOrderProduct orderStatus={'Preparar'} dayShift={'PEDIDOS PENDENTES'} orderList={orders} filterFunction={pendingOrders} statusFunction={toStatusPreparing}></FilteredOrderProduct>
           <FilteredOrderProduct orderStatus={'Finalizar'} dayShift={'PEDIDOS EM PRODUÇÃO'} orderList={orders} filterFunction={preparingOrders} statusFunction={toStatusDone}></FilteredOrderProduct>
-          <FilteredOrderProduct dayShift={'PEDIDOS FINALIZADOS'} orderList={orders} filterFunction={finishedOrders}></FilteredOrderProduct>
+          <PrintFinishedOrder sideTag={<p className="align-tag">Pedido finalizado</p>} dayShift={'PEDIDOS FINALIZADOS'} orderList={orders} filterFunction={finishedOrders}></PrintFinishedOrder>
         </div>
       </section>
     </div>

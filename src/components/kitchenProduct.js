@@ -24,6 +24,19 @@ export function OrderedProduct({ products, product, orderStatus, handleOnclick }
 	);
 }
 
+export function FinishedProduct({ products, product, orderStatus, handleOnclick }) {
+	return (
+		<div className="order-box">
+            <div className="order-header">
+                <p>Cliente: {product.client_name}</p>
+                <p>Mesa: {product.table}</p>
+                <p>Pedido: {product.id}</p>
+            </div>
+            {products}
+        </div>
+	);
+}
+
 export function FilteredOrderProduct( { orderList, filterFunction, dayShift, orderStatus, statusFunction }) {
     const filterStatusOrder = orderList.filter(filterFunction);
     const printOrder = filterStatusOrder.map((product, index) => <OrderedProduct handleOnclick={() => statusFunction(product)} orderStatus={orderStatus} product={product} key={index} products={product.Products.map((product) => {
